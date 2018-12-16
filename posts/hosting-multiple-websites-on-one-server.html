@@ -1,0 +1,213 @@
+<html lang="en">
+  <head>
+    <title>Hosting Multiple Websites on One Server</title>
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="../assets/js/script.js"></script>
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" sizes="16x16 32x32 64x64" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" type="image/png" sizes="196x196" href="../assets/favicons/favicon-192.png">
+    	<link rel="icon" type="image/png" sizes="160x160" href="../assets/favicons/favicon-160.png">
+    	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicons/favicon-96.png">
+    	<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicons/favicon-64.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16.png">
+    	<link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png">
+    	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicons/favicon-114.png">
+    	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicons/favicon-72.png">
+    	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicons/favicon-144.png">
+    	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicons/favicon-60.png">
+    	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicons/favicon-120.png">
+    	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicons/favicon-76.png">
+    	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicons/favicon-152.png">
+    	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/favicon-180.png">
+    	<meta name="msapplication-TileColor" content="#FFFFFF">
+    	<meta name="msapplication-TileImage" content="../assets/favicons/favicon-144.png">
+    	<meta name="msapplication-config" content="../assets/favicons/browserconfig.xml">
+  </head>
+  <nav>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="https://tristangoodell.com">Home</a>
+        <a href="https://blog.tgoodell.com">Blog</a>
+        <a href="../tags.html">Tags</a>
+        <a href="https://tristangoodell.com/my-work.html">My Work</a>
+        <a href="../contact.html">Get In Touch</a>
+        <a href="https://github.com/tgoodell">Github</a>
+      </div>
+    </div>
+    <div class="nav-logo">
+      <span class="menu-button" onclick="openNav()">&#9776; Menu</span>
+      <span>
+        <a href="https://blog.tgoodell.com">
+          <img src="../assets/images/logo.png" alt="blog-logo" class="top-logo"></img>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <body>
+    <div class="page-box">
+      <h1>Hosting Multiple Websites on One Server</h1>
+      <i class="tags-date">Tristan Goodell on <a href="../tags/tutorial.html">Tutorial</a>, <a href="../tags/project.html">Project</a>, <a href="../tags/apache-virtual-hosts.html">Apache Virtual Hosts</a>, <a href="../tags/digital-ocean.html">Digital Ocean</a>, <a href="../tags/website.html">Website</a> | 28 Sep 2018</i>
+      <p>I have had an issue that I have been trying to tackle since I started to get into Web Design and Development: the cost of hosting.</p>
+
+      <p>I use Digital Ocean to host https://tristangoodell.com. I have really liked using Digital Ocean thus far and I wanted to continue to use them. Only issue is that they do not natively support the hosting of multiple websites on one droplet.</p>
+
+      <p>I have a total of nine domains at the time of me writing this. $5 a month for a single server is fairly affordable. $5 x 9 is $45. While that is manageable, it gets pretty expensive pretty quickly. Hosting a single website per server can not only get expensive fast, but there is also an issue of manageability. I knew that there had to be a better way.</p>
+
+      <hr />
+
+      <p>After doing a couple of hours of research, I concluded that <a href="https://httpd.apache.org/docs/2.4/vhosts/">Apache Virtual Hosts</a> were the way to go.</p>
+
+      <p>I ran into two major roadblocks: the documentation on how to set up Apache Virtual Hosts was subpar at best, if not outdated, and Cloudflare did not want to cooperate.</p>
+
+      <hr />
+
+      <h2 id="setup">Setup</h2>
+
+      <p>I wanted to try this out with three websites at first:</p>
+
+      <ul>
+      <li>https://meecso.com</li>
+
+      <li>https://tgoodell.com</li>
+
+      <li>https://appin.space</li>
+      </ul>
+
+      <p>Simply replace my domain names with yours for this exercise.</p>
+
+      <p>SSH into your droplet.</p>
+
+      <p>This will make the directory <code>public_htm</code>l in <code>/var/www/yoursite.com/</code>. The files for the corresponding website will be in <code>public_html</code>.</p>
+
+      <p><code>sudo mkdir -p /var/www/meecso.com/public_html</code></p>
+
+      <p><code>sudo mkdir -p /var/www/tgoodell.com/public_html</code></p>
+
+      <p><code>sudo mkdir -p /var/www/appin.space/public_html</code></p>
+
+      <p>This will ensure that the directories that we just made will have the correct permissions for us to continue to prepare the Apache Virtual Hosts.</p>
+
+      <p><code>sudo chown -R $USER:root /var/www/meecso.com/public_html</code></p>
+
+      <p><code>sudo chown -R $USER:root /var/www/tgoodell.com/public_html</code></p>
+
+      <p><code>sudo chown -R $USER:root /var/www/appin.space/public_html</code></p>
+
+      <p><code>sudo chmod -R 755 /var/www</code></p>
+
+      <p>Next, we need to modify the index.html file within one of the directories.</p>
+
+      <p><code>nano /var/www/meecso.com/public_html/index.html</code></p>
+
+      <p>Use some basic HTML to validate that you are in fact viewing the right files for your website. Something like this will do:</p>
+
+      <pre><code>&lt;HTML&gt;
+
+      &lt;head&gt;
+
+      &lt;h1&gt;Success!&lt;/h1&gt;
+
+      &lt;/head&gt;
+
+      &lt;body&gt;
+
+      &lt;p&gt;You are now viewing meecso.com!&lt;/p&gt;
+
+      &lt;/body&gt;
+
+      &lt;/html&gt;
+      </code></pre>
+
+      <p>Replace <code>meecso.com</code> with your domain. We need to do the same with the other domains, so you can simply copy the <code>index.html</code> file that we just worked on to the new directory.</p>
+
+      <p><code>cp /var/www/meecso.com/public_html/index.html /var/www/tgoodell.com/public_html/index.html</code></p>
+
+      <p>Make sure to nano the new index.html file and modify the domain name to ensure that we can validate the website later on.</p>
+
+      <p><code>nano /var/www/tgoodell.com/public_html/index.html</code></p>
+
+      <p>Next, we need to copy the current .conf file for the default web host location to the new ones.</p>
+
+      <p><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/meecso.com.conf</code></p>
+
+      <p>Nano in to modify the necessary areas.</p>
+
+      <p><code>sudo nano /etc/apache2/sites-available/meecso.com.conf</code></p>
+
+      <p>Webmaster email.</p>
+
+      <p><code>ServerAdmin contact@tristangoodell.com</code></p>
+
+      <p>The directory where the files of the website is located.</p>
+
+      <p><code>DocumentRoot /var/www/meecso.com/public_html</code></p>
+
+      <p>The domain names with any necessary subdomains.</p>
+
+      <p><code>ServerName meecso.com</code></p>
+
+      <p><code>ServerAlias meecso.com</code></p>
+
+      <p>The directory where files are located.</p>
+
+      <p><code>&lt;Directory /var/www/meecso.com/public_html&gt;</code></p>
+
+      <p>Copy the .conf file that we just worked on to the other locations.</p>
+
+      <p><code>sudo cp /etc/apache2/sites-available/meecso.com.conf /etc/apache2/sites-available/tgoodell.com.conf</code></p>
+
+      <p>Modify the necessary entries.</p>
+
+      <p><code>sudo nano /etc/apache2/sites-available/tgoodell.com.conf</code></p>
+
+      <p>Finally, we need to enable and disable some directories.</p>
+
+      <p>Enable our first website.</p>
+
+      <p><code>sudo a2ensite meecso.com.conf</code></p>
+
+      <p>Enable our second website.</p>
+
+      <p><code>sudo a2ensite tgoodell.com.conf</code></p>
+
+      <p>Disable the default directory.</p>
+
+      <p><code>sudo a2dissite 000-default.conf</code></p>
+
+      <p>Restart apache.</p>
+
+      <p><code>sudo systemctl restart apache2</code></p>
+
+      <p>Voila! Test out your websites to ensure that everything is working perfectly. If it isn't feel free to let me know in the comments below.</p>
+
+      <p>Make sure that Digital Ocean is pointing to your domain and that your domain's DNS settings are properly configured.
+      Pushing Out Updates</p>
+
+      <p>A website isn't very useful if it does not have any content. The best way to push updates that I have found is by uploading files to Github and then cloning them to the server.</p>
+
+      <p>Navigate to the proper directory.  </p>
+
+      <p><code>cd /var/www/meecso.com</code></p>
+
+      <p>Make sure that there is a public_html.</p>
+
+      <p><code>ls</code></p>
+
+      <p>Remove public_html.</p>
+
+      <p><code>rm -rf public_html</code></p>
+
+      <p>Clone the Github repo into a new public_html.</p>
+
+      <p><code>git clone https://github.com/tgoodell/meecso.com public_html</code></p>
+
+      <p>Theoretically, you should be able to host Ghost and Wordpress websites using Apache Virtual Hosts as well, although I have not tried this yet.</p>
+    </div>
+    <div class="footer-copyright">
+      Copyright <a href="https://tristangoodell.com/">Tristan Goodell</a> 2018
+    </div>
+  </body>
+</html>

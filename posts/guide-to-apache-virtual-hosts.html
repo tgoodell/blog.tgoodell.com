@@ -1,0 +1,235 @@
+<html lang="en">
+  <head>
+    <title>Guide to Apache Virtual Hosts</title>
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="../assets/js/script.js"></script>
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" sizes="16x16 32x32 64x64" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" type="image/png" sizes="196x196" href="../assets/favicons/favicon-192.png">
+    	<link rel="icon" type="image/png" sizes="160x160" href="../assets/favicons/favicon-160.png">
+    	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicons/favicon-96.png">
+    	<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicons/favicon-64.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16.png">
+    	<link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png">
+    	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicons/favicon-114.png">
+    	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicons/favicon-72.png">
+    	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicons/favicon-144.png">
+    	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicons/favicon-60.png">
+    	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicons/favicon-120.png">
+    	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicons/favicon-76.png">
+    	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicons/favicon-152.png">
+    	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/favicon-180.png">
+    	<meta name="msapplication-TileColor" content="#FFFFFF">
+    	<meta name="msapplication-TileImage" content="../assets/favicons/favicon-144.png">
+    	<meta name="msapplication-config" content="../assets/favicons/browserconfig.xml">
+  </head>
+  <nav>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="https://tristangoodell.com">Home</a>
+        <a href="https://blog.tgoodell.com">Blog</a>
+        <a href="../tags.html">Tags</a>
+        <a href="https://tristangoodell.com/my-work.html">My Work</a>
+        <a href="../contact.html">Get In Touch</a>
+        <a href="https://github.com/tgoodell">Github</a>
+      </div>
+    </div>
+    <div class="nav-logo">
+      <span class="menu-button" onclick="openNav()">&#9776; Menu</span>
+      <span>
+        <a href="https://blog.tgoodell.com">
+          <img src="../assets/images/logo.png" alt="blog-logo" class="top-logo"></img>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <body>
+    <div class="page-box">
+      <h1>Guide to Apache Virtual Hosts</h1>
+      <i class="tags-date">Tristan Goodell on <a href="../tags/tutorial.html">Tutorial</a>, <a href="../tags/apache-virtual-hosts.html">Apache Virtual Hosts</a> | 18 Oct 2018</i>
+      <p>Virtual Hosts are an easy and affordable way to host multiple websites on one server. This guide is a summed up version of <a href="https://blog.tristangoodell.com/hosting-multiple-websites-on-one-server/">this project</a>.</p>
+
+      <h2 id="step1prerequisites">Step 1 - Prerequisites</h2>
+
+      <h3 id="ihaveaserver">i. Have a server.</h3>
+
+      <p>Head over to <a href="http://pages.news.digitalocean.com/dcn/AyKQ30vur1Nt8H30LIWxk-j5xHmafGnoECQwn1ooO75-n4tuZXTwGdYjSIr5qbK0xTcckfnLm_U1fCT4uON9bg==/Y0Vs207XI00WN0236IE03D7">Digital Ocean</a> or your host of choice to setup a server.</p>
+
+      <h3 id="iiinstallapache">ii. Install Apache.</h3>
+
+      <p>SSH into your Droplet.</p>
+
+      <p><code>ssh root@xxx.xx.xxx.xxx</code></p>
+
+      <p>Update your droplet</p>
+
+      <p><code>sudo apt-get update</code></p>
+
+      <p>Next, install Apache</p>
+
+      <p><code>sudo apt-get install apache2</code></p>
+
+      <h2 id="step2configuringapachevirtualhosts">Step 2 - Configuring Apache Virtual Hosts</h2>
+
+      <p>Navigate to <code>/var/www</code></p>
+
+      <p><code>cd /var/www</code></p>
+
+      <p>You can use the command <code>ls</code> to view any folders or files in the directory; there should only be <code>html</code> (the default web directory).</p>
+
+      <p>Create necessary directories for the websites that you are wanting to configure. Replace 'tristangoodell.com' and 'meecso.com' with your domains (You are not limited to just two domains).</p>
+
+      <p><code>sudo mkdir -p /var/www/tristangoodell.com/public_html</code></p>
+
+      <p><code>sudo mkdir -p /var/www/meecso.com/public_html</code></p>
+
+      <p>Modify Permissions:</p>
+
+      <p><code>sudo chown -R $USER:root /var/www/tristangoodell.com/public_html</code></p>
+
+      <p><code>sudo chown -R $USER:root /var/www/meecso.com/public_html</code></p>
+
+      <p><code>sudo chmod -R 755 /var/www</code></p>
+
+      <p>In order to test if the Virtual Hosts are working, navigate to your first domain's directory.</p>
+
+      <p><code>cd /var/www/tristangoodell.com/public_html</code></p>
+
+      <p>Create an index.html file.</p>
+
+      <p><code>nano /var/www/tristangoodell.com/public_html/index.html</code></p>
+
+      <p>Create some basic HTML with a few indicators showing that the web page is showing up for the right domain. Something like this will do:</p>
+
+      <pre><code>&lt;HTML&gt;
+
+      &lt;head&gt;
+
+      &lt;h1&gt;Success!&lt;/h1&gt;
+
+      &lt;/head&gt;
+
+      &lt;body&gt;
+
+      &lt;p&gt;You are now viewing tristangoodell.com!&lt;/p&gt;
+
+      &lt;/body&gt;
+
+      &lt;/html&gt;
+      </code></pre>
+
+      <p>Next, copy the <code>index.html</code> file that was just created and move it to the correct directory.</p>
+
+      <p><code>cp /var/www/tristangoodell.com/public_html/index.html /var/www/meecso.com/public_html/index.html</code></p>
+
+      <p>Modify the necessary areas.</p>
+
+      <p><code>nano /var/www/meecso.com/public_html/index.html</code></p>
+
+      <p>Next, we need to copy the current <code>.conf</code> file for the default webhost and modify them for the new domains.</p>
+
+      <p><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/tristangoodell.com.conf</code></p>
+
+      <p>Modify the precise areas.</p>
+
+      <p><code>sudo nano /etc/apache2/sites-available/tristangoodell.com.conf</code></p>
+
+      <p>The end result should look similar to this:</p>
+
+      <pre><code>&lt;VirtualHost *:80&gt;
+
+      ServerAdmin contact@tristangoodell.com
+
+      DocumentRoot /var/www/tristangoodell.com/public_html
+
+      ServerName tristangoodell.com
+
+      ServerAlias tristangoodell.com
+
+      &lt;Directory /var/www/tristangoodell.com/public_html&gt;
+
+      Options Indexes FollowSymLinks
+
+      AllowOverride All
+
+      Require all granted
+
+      &lt;/Directory&gt;
+
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+      &lt;IfModule mod_dir.c&gt;
+
+      DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm
+
+      &lt;/IfModule&gt;
+
+      &lt;/VirtualHost&gt;</code></pre>
+
+      <p>Next, copy the configuration file for your first site in preparation for your second.</p>
+
+      <p><code>sudo cp /etc/apache2/sites-available/tristangoodell.com.conf /etc/apache2/sites-available/meecso.com.conf</code></p>
+
+      <p>Modify the necessary information:</p>
+
+      <p><code>sudo nano /etc/apache2/sites-available/meecso.com.conf</code></p>
+
+      <p>Finally, we need to disable the default web server config file and activate the files that were just created.</p>
+
+      <p>Enable site 1:</p>
+
+      <p><code>sudo a2ensite tristangoodell.com.conf</code></p>
+
+      <p>Enable site 2:</p>
+
+      <p><code>sudo a2ensite meecso.com.conf</code></p>
+
+      <p>Disable the default web config file:</p>
+
+      <p><code>sudo a2dissite 000-default.conf</code></p>
+
+      <p>Restart Apache:</p>
+
+      <p><code>sudo systemctl restart apache2</code></p>
+
+      <hr />
+
+      <p>Make sure to connect your web server to your DNS and your DNS to your web server. Test out your websites afterwards to ensure that everything is working as it should.</p>
+
+      <hr />
+
+      <h2 id="step3pushingoutupdates">Step 3 - Pushing Out Updates</h2>
+
+      <p>A website isn't very useful if it does not have any content. The best  way to push updates that I have found is by uploading files to <a href="https://github.com/">Github</a> and then cloning them to the server.</p>
+
+      <p>Navigate to the proper directory:</p>
+
+      <p><code>cd /var/www/meecso.com</code></p>
+
+      <p>Check if there is a <code>public_html</code> directory.</p>
+
+      <p><code>ls</code></p>
+
+      <p>If there is, remove it.</p>
+
+      <p><code>rm -rf public_html</code></p>
+
+      <p>Clone the Github repo into a new public_html.</p>
+
+      <p><code>git clone https://github.com/tgoodell/meecso.com public_html</code></p>
+
+      <hr />
+
+      <p>Hope this helped!</p>
+
+    </div>
+    <div class="footer-copyright">
+      Copyright <a href="https://tristangoodell.com/">Tristan Goodell</a> 2018
+    </div>
+  </body>
+</html>

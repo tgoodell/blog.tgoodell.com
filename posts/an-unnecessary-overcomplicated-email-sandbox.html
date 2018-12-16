@@ -1,0 +1,132 @@
+<html lang="en">
+  <head>
+    <title>An Unnecessary, Overcomplicated Email Sandbox</title>
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="../assets/js/script.js"></script>
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" sizes="16x16 32x32 64x64" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" type="image/png" sizes="196x196" href="../assets/favicons/favicon-192.png">
+    	<link rel="icon" type="image/png" sizes="160x160" href="../assets/favicons/favicon-160.png">
+    	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicons/favicon-96.png">
+    	<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicons/favicon-64.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16.png">
+    	<link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png">
+    	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicons/favicon-114.png">
+    	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicons/favicon-72.png">
+    	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicons/favicon-144.png">
+    	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicons/favicon-60.png">
+    	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicons/favicon-120.png">
+    	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicons/favicon-76.png">
+    	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicons/favicon-152.png">
+    	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/favicon-180.png">
+    	<meta name="msapplication-TileColor" content="#FFFFFF">
+    	<meta name="msapplication-TileImage" content="../assets/favicons/favicon-144.png">
+    	<meta name="msapplication-config" content="../assets/favicons/browserconfig.xml">
+  </head>
+  <nav>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="https://tristangoodell.com">Home</a>
+        <a href="https://blog.tgoodell.com">Blog</a>
+        <a href="../tags.html">Tags</a>
+        <a href="https://tristangoodell.com/my-work.html">My Work</a>
+        <a href="../contact.html">Get In Touch</a>
+        <a href="https://github.com/tgoodell">Github</a>
+      </div>
+    </div>
+    <div class="nav-logo">
+      <span class="menu-button" onclick="openNav()">&#9776; Menu</span>
+      <span>
+        <a href="https://blog.tgoodell.com">
+          <img src="../assets/images/logo.png" alt="blog-logo" class="top-logo"></img>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <body>
+    <div class="page-box">
+      <h1>An Unnecessary, Overcomplicated Email Sandbox</h1>
+      <i class="tags-date">Tristan Goodell on <a href="../tags/project.html">Project</a>, <a href="../tags/email.html">Email</a> | 05 Oct 2018</i>
+      <p>The title is pretty self explanatory: this setup is unnecessary and way more complicated than it really needs to be to have proper online security. I would not suggest a replication of this email sandbox strategy simply due to how much of a headache it was to develop and how it (probably) does not actually contribute much to online security.</p>
+      <h2>The Events Prior to This</h2>
+      <p>On Friday, January 18, 2018 at 7:24 PM, an IP address in Dnipro, Dnipropetrovsk Oblast, Ukraine attempted to break into my primary Google Account. This was not good.</p>
+      <p>I was using <a href="https://www.lastpass.com/">Lastpass</a> as my password manager at the time. The password for the almost-compromised Google account was a randomized 64 characters long with both capital and lowercase letters, numbers, and various symbols.</p>
+      <p>According to <a href="https://blog.tgoodell.com/an-unnecessary-overcomplicated-email-sandbox/howsecureismypassword.net">howsecureismypassword.net</a>, it would take a computer 4 trestrigintillion years to crack the password. That begs the question: how did these hackers get my password? I don't think that they had 4 trestrigintillion to brute force it and I don't know how they could have intercepted it.</p>
+      <p>And the hackers did have my password; from the testing that I have done, Google only notifies you of a potential login only if a hacker logs into your account from a fishy location or is blocked by two factor authentication.  </p>
+      <p>Following this event, I performed a self-done security audit: changed passwords, ensured that no other accounts were compromised, double checked that 2FA was enabled on all platforms that offered it (it was), and looked for potential security flaws that could have caused this whole ordeal. There were none. Weird.</p>
+      <p>This was not the last instance of weird happenings with email accounts, however.</p>
+      <p>Last Spring, I left the country for about a week. I was without internet during that time period (which was probably a mistake). When I returned, I noticed something odd: I was receiving an error message for the email account that I use for various online accounts. I use <a href="https://k9mail.github.io/">K-9 Mail</a> as my mobile email client. Connection errors are not unheard of in my experience, so I thought nothing of it at the time. Furthermore, I use <a href="https://disroot.org/en">Disroot</a> as my email provider which also sometimes has outages (unsure if they are just on my side or theirs).</p>
+      <p>When I returned home and attempted to diagnose this issue, I was met with unexpected results.</p>
+      <p>This wasn't good: nearly all of my accounts were tied to this one email account.</p>
+      <p>When I attempted to reset my password using the <a href="https://user.disroot.org/pwm/private/login">Self Service Password Center</a>, I was greeted with another error.</p>
+      <p>Not good. When I attempted to send an email to the locked email account, I was given the error <code>550 5.1.1 : Recipient address rejected: User unknown in virtual mailbox table</code>. Weird.</p>
+      <p>I assumed that either (a) someone broke into my presumably secure email account and deleted it or (b) Disroot messed up and removed it for some unknown reason.</p>
+      <p>Regardless, I wanted a solution that would prevent an account from being compromised, and, at the very least, let me know what happened and why.</p>
+      <h2>The Plan</h2>
+      <p>Sandboxing with redundancy. Simple as that.</p>
+      <p>The plan is to use separate email accounts for different purposes and have several mirrors and archives to help ensure that I know what is going on with an email account, even if I do not have access to it.</p>
+      <p>The design can be separated into three main areas:</p>
+      <p>1.) Communicative - Personal, school, and work emails ; emails that you expect to need to respond to.</p>
+      <p>2.) Utility - Online Accounts, Newsletters, and more ; emails that are just there for account confirmation and the receiving of emails. No responses.</p>
+      <p>3.) Mirrors - Security, Archiving, and simplifying the number of email accounts that you need to keep track of.</p>
+      <div class="break-line">
+      <h2>Execution</h2>
+      <p>Three dozen accounts are implemented in this design. They are from various providers including Google, Disroot, Tutanota, Zoho, and several others. Each has 2FA enabled and strong passwords. Here is how they roughly pan out:</p>
+
+      <ul>
+      <li>3 Security Accounts - any and all emails that relate to security are passed to these three accounts. For extra redundancy, each account receives security notifications to ensure that I know what occurred in the event of a breach.</li>
+
+      <li>2 Archive Accounts - all emails are passed through to these accounts as a backup archive.</li>
+
+      <li>3 School Accounts - these all feed into a mirror to ensure that I receive emails from all three. No, I am not enrolled in three schools; school IT departments just don't delete student emails (even though they no longer have access to domain in the case of one of these).</li>
+
+      <li>4 Personal Emails - for conversing with the family and friends.</li>
+
+      <li>13 Miscellaneous Accounts - for newsletters, updates, account notifications, and more. Most of these feed into a pass-through account for simplicity.</li>
+
+      <li>7 Work Emails - all for the website for different purposes.</li>
+
+      <li>2 Pass-through accounts - to simplify the Misc accounts.</li>
+      </ul>
+
+      <p>Grand Total = 36 Email Accounts</p>
+
+      <hr />
+
+      <h2 id="conclusion">Conclusion</h2>
+
+      <p>At the end of the day, this is an unnecessary, bloated approach to online security. The hassle is most definitely more than it is worth and it offers, at best, minimal security advantages over a simpler approach.</p>
+
+      <p>Even though our email account is the key to our entire online existence, 36 emails are overkill. If I were to implement this today, I would have three accounts: (1) Personal to interact with, (2) one for newletters and online accounts, and (3) an archive/security passthrough to ensure that you have a record of any fishy activity with your email accounts.</p>
+
+      <p>Some tips:</p>
+
+      <ul>
+      <li>Only use your personal account for personal interactions. Don't hand it out to online entities: they will potentially sell your email to advertisers (which opens up the door to spam).</li>
+
+      <li>Make sure to configure automatic forwarding to your security/archive account so that you have a record of what is going on in the event of a security breach.</li>
+
+      <li>Use POP3 for the archive/security account. Depending on the email provider, you can have anywhere between 500MB and 15GB of storage. This can be exhausted quickly if you are not careful. I would suggest that you use a Raspberry Pi or any other computer to use as an email archive machine. The Post Office Protocol Version 3 (POP3) works by downloading your emails to your computer and then deleting them from the server. This means that you can have an offline backup of all of your emails almost instantaneously without having to worry about someone else modifying the contents.  </li>
+      </ul>
+
+      <p>And of course:</p>
+
+      <ul>
+      <li>Use a strong, random password with capital and lowercase letters, digits, and symbols. My go to length is 64 characters, although I do suggest that you use the maximum length if you can.</li>
+
+      <li>Use a password manager like KeepassX, Lastpass, or Bitwarden. I have used all three before. It is really all about preference.</li>
+
+      <li>Use two factor authentication. I use FreeOTP+ on Android. Any 2FA solution would work however.</li>
+      </ul>
+
+      <p>Good luck!</p>
+
+    </div>
+    <div class="footer-copyright">
+      Copyright <a href="https://tristangoodell.com/">Tristan Goodell</a> 2018
+    </div>
+  </body>
+</html>

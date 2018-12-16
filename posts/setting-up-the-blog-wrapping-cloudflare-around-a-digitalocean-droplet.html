@@ -1,0 +1,156 @@
+<html lang="en">
+  <head>
+    <title>Setting Up the Blog - Wrapping Cloudflare Around a DigitalOcean Droplet</title>
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="../assets/js/script.js"></script>
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" sizes="16x16 32x32 64x64" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" type="image/png" sizes="196x196" href="../assets/favicons/favicon-192.png">
+    	<link rel="icon" type="image/png" sizes="160x160" href="../assets/favicons/favicon-160.png">
+    	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicons/favicon-96.png">
+    	<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicons/favicon-64.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16.png">
+    	<link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png">
+    	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicons/favicon-114.png">
+    	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicons/favicon-72.png">
+    	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicons/favicon-144.png">
+    	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicons/favicon-60.png">
+    	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicons/favicon-120.png">
+    	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicons/favicon-76.png">
+    	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicons/favicon-152.png">
+    	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/favicon-180.png">
+    	<meta name="msapplication-TileColor" content="#FFFFFF">
+    	<meta name="msapplication-TileImage" content="../assets/favicons/favicon-144.png">
+    	<meta name="msapplication-config" content="../assets/favicons/browserconfig.xml">
+  </head>
+  <nav>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="https://tristangoodell.com">Home</a>
+        <a href="https://blog.tgoodell.com">Blog</a>
+        <a href="../tags.html">Tags</a>
+        <a href="https://tristangoodell.com/my-work.html">My Work</a>
+        <a href="../contact.html">Get In Touch</a>
+        <a href="https://github.com/tgoodell">Github</a>
+      </div>
+    </div>
+    <div class="nav-logo">
+      <span class="menu-button" onclick="openNav()">&#9776; Menu</span>
+      <span>
+        <a href="https://blog.tgoodell.com">
+          <img src="../assets/images/logo.png" alt="blog-logo" class="top-logo"></img>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <body>
+    <div class="page-box">
+      <h1>Setting Up the Blog - Wrapping Cloudflare Around a DigitalOcean Droplet</h1>
+      <i class="tags-date">Tristan Goodell on <a href="../tags/project.html">Project</a>, <a href="../tags/website.html">Website</a>, <a href="../tags/cloudflare.html">Cloudflare</a>, <a href="../tags/digital-ocean.html">Digital Ocean</a> | 03 Aug 2018</i>
+      <p>I have been wanting to construct a blog for quite a while; a place to document my various projects and goals with the hope that I can maybe help others reach their own goals.</p>
+
+      <p>I really didn't want to use WordPress for my blog. It is much too bloated and slow for my purposes. I wanted to use something that was snappy and super fast.</p>
+
+      <p>I considered several options: Pico CMS, Anchor CMS, or Grav CMS; however, at the end of the day, I decided to use Ghost for my blog.
+      <a href="https://www.troyhunt.com/">Troy Hunt</a> uses Ghost Pro for his blog, and his blog is beautiful. He makes a very compelling argument for <a href="https://www.troyhunt.com/its-a-new-blog/">why he went with Ghost Pro, rather than hosting it on his own</a>.</p>
+
+      <p>I really did not want to have to pay $79 a month for <a href="https://ghost.org/pricing/">Ghost Pro</a>, when I could host my own with <a href="http://pages.news.digitalocean.com/dcn/AyKQ30vur1Nt8H30LIWxk-j5xHmafGnoECQwn1ooO75-n4tuZXTwGdYjSIr5qbK0xTcckfnLm_U1fCT4uON9bg==/Y0Vs207XI00WN0236IE03D7">Digital Ocean</a> for only $5 a month. Furthermore, <a href="https://www.digitalocean.com/customers/ghost/">GhostPro actually uses Digital Ocean</a> for their hosting.</p>
+
+      <p>So, I went ahead and activated a droplet with the <a href="https://www.digitalocean.com/products/one-click-apps/ghost/">Ghost one-click app</a>. Setup was a breeze. I went to my email, grabbed the IP address I was given, pasted it into Firefox, and was greeted with a message saying that I needed to set up my Ghost instance.</p>
+
+      <p>I typed in <code>ssh root@xxx.xxx.xxx.xxx</code> into my terminal, entered the password that was given to me, and then changed it to a new one. Next, I typed in several lines into my terminal to finish the backend setup process.</p>
+
+      <h3 id="sshintoyourdroplet">SSH into your Droplet</h3>
+
+      <p><code>ssh root@xxx.xxx.xxx.xxx</code> where <code>xxx.xxx.xxx.xxx</code> is your Droplet's IP Address.</p>
+
+      <h3 id="switchtouserghostmgr">Switch to user ghost-mgr</h3>
+
+      <p><code>sudo -i -u ghost-mgr</code></p>
+
+      <h3 id="gotothedirectorywhereghostisinstalled">Go to the directory where Ghost is installed</h3>
+
+      <p><code>cd /var/www/ghost</code></p>
+
+      <h3 id="updateghost">Update Ghost</h3>
+
+      <p><code>ghost update</code></p>
+
+      <h3 id="configureghost">Configure Ghost</h3>
+
+      <p><code>ghost setup</code></p>
+
+      <p>Follow the prompts and you'll be finished there.</p>
+
+      <hr />
+
+      <p>It was now time to set up everything else. I navigated to https://xxx.xxx.xxx.xxx/ghost to begin configuring what visitors to my website would see.</p>
+
+      <p>I set up my administrator account with all of the right credentials and a strong password. Next, I simply skipped the invitation to invite other writers to this blog (I will be the only one writing here). The initial setup process was finished.</p>
+
+      <p>I now wanted to wrap <a href="https://www.cloudflare.com/">Cloudflare</a> around my blog and actually connect my domain https://tristangoodell.com to my Droplet.</p>
+
+      <hr />
+
+      <p>On DigitalOcean, I navigated to Networking --> Domains. I then proceeded to type in my domain tristangoodell.com into the box with the placeholder "Enter Domain" (NOTE: you cannot type in the protocol; https / http). You will be greeted with a screen that features a DNS record. You can either connect your Domain to DigitalOcean's DNS or connect your domain to Cloudflare.</p>
+
+      <p>I wanted my blog to be as fast as possible, so I connected my domain to Cloudflare's DNS and set up everything over there. <a href="https://httpsiseasy.com/">Here is a great guide</a> by Troy Hunt that will teach you how to connect Cloudflare to your domain and configure various security features, such as HTTPS.</p>
+
+      <p>Once I connected my domain to Cloudflare, I needed to connect Cloudflare to my Droplet. Navigate to the <code>DNS</code> tab on your selected website.</p>
+
+      <p>Record Type:
+      <code>A</code></p>
+
+      <p>Name:
+      <code>@</code> (Will automatically become domain, i.e tristangoodell.com)</p>
+
+      <p>Value:
+      <code>xxx.xxx.xxx.xxx</code> (Will be the IP address of your Droplet)</p>
+
+      <p>TTL:
+      <code>Automatic</code></p>
+
+      <p>Finally, ensure that there is an orange cloud under "Status". This means that your website actually goes through Cloudflare's trademark caching.</p>
+
+      <blockquote>
+        <p>One thing though: Be extremely patient</p>
+      </blockquote>
+
+      <p>When I did this, it took a good day and half for this to consistantly work. I kept modifying my DNS settings, which simply made the wait even longer. Your domain should be connected to your Droplet through Cloudflare after a couple of hours to a full day.</p>
+
+      <hr />
+
+      <p>Well, https://tristangoodell.com is now up and running and looks quite pretty. I will be making several key changes over the coming weeks and months that I really hope improve the look and quality of the site. A couple of key features that are missing at the time of this writing are:</p>
+
+      <ul>
+      <li>Comments: comments are not operational yet, however they are planned and are a top priority.</li>
+
+      <li>Newsletters: you may have noticed several places asking for your email. You are welcome to register your email, however there is no newsletter yet due to <a href="https://www.ftc.gov/tips-advice/business-center/guidance/can-spam-act-compliance-guide-business">legal reasons</a>. When there is a newsletter, those registered will be the first ones to receive it however.</li>
+
+      <li>Other pages: I still need to finish writing the Privacy Policy and About pages for the site. Furthermore, I'd like to create a couple of unique graphics for each and every page. I want to also write up several tags and meta stuff for an improved UI.</li>
+      </ul>
+
+      <p>If you have any suggestions, questions, or feedback, feel free to hit me up on Twitter or shoot an email my way.</p>
+
+      <hr />
+
+      <p>Links of Interest</p>
+
+      <ul>
+      <li><a href="http://pages.news.digitalocean.com/dcn/AyKQ30vur1Nt8H30LIWxk-j5xHmafGnoECQwn1ooO75-n4tuZXTwGdYjSIr5qbK0xTcckfnLm_U1fCT4uON9bg==/Y0Vs207XI00WN0236IE03D7">Digital Ocean</a></li>
+
+      <li><a href="https://www.digitalocean.com/products/one-click-apps/ghost/">Ghost One-Click App</a></li>
+
+      <li><a href="https://www.cloudflare.com/">Cloudflare</a></li>
+
+      <li><a href="https://httpsiseasy.com/">HTTPS is Easy Cloudflare Tutorial</a></li>
+      </ul>
+    </div>
+    <div class="footer-copyright">
+      Copyright <a href="https://tristangoodell.com/">Tristan Goodell</a> 2018
+    </div>
+  </body>
+</html>

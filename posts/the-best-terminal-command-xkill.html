@@ -1,0 +1,91 @@
+<html lang="en">
+  <head>
+    <title>The Best Terminal Command</title>
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="../assets/js/script.js"></script>
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" sizes="16x16 32x32 64x64" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" type="image/png" sizes="196x196" href="../assets/favicons/favicon-192.png">
+    	<link rel="icon" type="image/png" sizes="160x160" href="../assets/favicons/favicon-160.png">
+    	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicons/favicon-96.png">
+    	<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicons/favicon-64.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16.png">
+    	<link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png">
+    	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicons/favicon-114.png">
+    	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicons/favicon-72.png">
+    	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicons/favicon-144.png">
+    	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicons/favicon-60.png">
+    	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicons/favicon-120.png">
+    	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicons/favicon-76.png">
+    	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicons/favicon-152.png">
+    	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/favicon-180.png">
+    	<meta name="msapplication-TileColor" content="#FFFFFF">
+    	<meta name="msapplication-TileImage" content="../assets/favicons/favicon-144.png">
+    	<meta name="msapplication-config" content="../assets/favicons/browserconfig.xml">
+  </head>
+  <nav>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="https://tristangoodell.com">Home</a>
+        <a href="https://blog.tgoodell.com">Blog</a>
+        <a href="../tags.html">Tags</a>
+        <a href="https://tristangoodell.com/my-work.html">My Work</a>
+        <a href="../contact.html">Get In Touch</a>
+        <a href="https://github.com/tgoodell">Github</a>
+      </div>
+    </div>
+    <div class="nav-logo">
+      <span class="menu-button" onclick="openNav()">&#9776; Menu</span>
+      <span>
+        <a href="https://blog.tgoodell.com">
+          <img src="../assets/images/logo.png" alt="blog-logo" class="top-logo"></img>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <body>
+    <div class="page-box">
+      <h1>The Best Terminal Command: xkill</h1>
+      <i class="tags-date">Tristan Goodell on <a href="tags/opinion.html">Opinion</a> | 07 Sep 2018</i>
+      <p>Today, I will be presenting hands-down one of the best Linux terminal commands: <code>xkill</code>. <a href="https://www.x.org/archive/current/doc/man/man1/xkill.1.xhtml">Xkill</a> is a terminal command that usually comes with most Linux distrobutions. It is really handy because if an application ceases to work, you can simply 'xkill it': causing all processes to cease.</p>
+
+      <p>This command is incredibly handy if, say, your web browser freezes and you cannot close the application under normal circumstances. Just <code>ctrl + alt + t</code> to open up a new terminal window and type in <code>xkill</code>.  Your cursor will turn into an <code>x</code>. Next, click the window of the application that is not functioning normaly. The window will close and you can move on with life! It is incredibily handy.</p>
+
+      <p>According to the official documentation:</p>
+
+      <blockquote>
+        <p>Xkill is a utility for forcing the X server to close connections to clients. This program is very dangerous, but is useful for aborting programs that have displayed undesired windows on a user's screen. If no resource identifier is given with -id, xkill will display a special cursor as a prompt for the user to select a window to be killed. If a pointer button is pressed over a non-root window, the server will close its connection to the client that created the window.</p>
+      </blockquote>
+
+      <p>When used correctly, xkill can be an invaluable tool to your everyday workflow. It is wise to use with caution however. You may accidentally xkill a process that you didn't mean to.</p>
+
+      <hr />
+
+      <h2 id="howtogetxkill">How to Get Xkill</h2>
+
+      <p>If your linux distrobution does not already come with the easy to use xkill, you can easily install it using the terminal commands below.</p>
+
+      <h3 id="ubuntu">Ubuntu</h3>
+
+      <p><code>sudo apt-get install xorg-xkill</code></p>
+
+      <h3 id="fedora">Fedora</h3>
+
+      <p><code>sudo yum install xorg-xkill</code></p>
+
+      <h3 id="arch">Arch</h3>
+
+      <p><code>sudo pacman -S xorg-xkill</code></p>
+
+      <p>Sadly, there is no mainstream equivalant of xkill on Windows or OSX, however there were talks of a Windows <a href="https://www.ghacks.net/2008/10/18/windows-xkill/">port</a> here. The post has not been updated since 2013, so I am unsure if it would even work.</p>
+
+      <p>There have been several threads talking about a potential xkill port to OSX, however I have not found any concrete releases at the time of writing this.</p>
+    </div>
+    <div class="footer-copyright">
+      Copyright <a href="https://tristangoodell.com/">Tristan Goodell</a> 2018
+    </div>
+  </body>
+</html>
