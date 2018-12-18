@@ -8,11 +8,8 @@ body {
 }
 
 .code, code {
-  background: #faf9f7;
-  border: 1px solid #e5e4e1;
-  padding: 1 5px;
-  position: relative;
-  font-size: 20px;
+  color: #cd6e89;
+  font-size: 19px;
 }
 
 .quote, blockquote {
