@@ -10,6 +10,7 @@ body {
 .code, code {
   color: #cd6e89;
   font-size: 19px;
+  word-wrap: break-word;
 }
 
 .quote, blockquote {
