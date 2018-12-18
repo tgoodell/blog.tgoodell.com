@@ -137,37 +137,39 @@
 
       <p>The end result should look similar to this:</p>
 
-      <p><code>&lt;VirtualHost *:80&gt;</p></code>
-
-      <p><code>ServerAdmin contact@tristangoodell.com</p></code>
-
-      <p><code>DocumentRoot /var/www/tristangoodell.com/public_html</p></code>
-
-      <p><code>ServerName tristangoodell.com</p></code>
-
-      <p><code>ServerAlias tristangoodell.com</p></code>
-
-      <p><code>&lt;Directory /var/www/tristangoodell.com/public_html&gt;</p></code>
-
-      <p><code>Options Indexes FollowSymLinks</p></code>
-
-      <p><code>AllowOverride All</p></code>
-
-      <p><code>Require all granted</p></code>
-
-      <p><code>&lt;/Directory&gt;</p></code>
-
-      <p><code>ErrorLog ${APACHE_LOG_DIR}/error.log</p></code>
-
-      <p><code>CustomLog ${APACHE_LOG_DIR}/access.log combined</p></code>
-
-      <p><code>&lt;IfModule mod_dir.c&gt;</p></code>
-
-      <p><code>DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm</p></code>
-
-      <p><code>&lt;/IfModule&gt;</p></code>
-
-      <p><code>&lt;/VirtualHost&gt;</code></p>
+      <code>
+        
+      &lt;VirtualHost *:80&gt;
+      <br></br>
+      ServerAdmin contact@tristangoodell.com
+      <br></br>
+      DocumentRoot /var/www/tristangoodell.com/public_html
+      <br></br>
+      ServerName tristangoodell.com
+      <br></br>
+      ServerAlias tristangoodell.com
+      <br></br>
+      &lt;Directory /var/www/tristangoodell.com/public_html&gt;
+      <br></br>
+      Options Indexes FollowSymLinks
+      <br></br>
+      AllowOverride All
+      <br></br>
+      Require all granted
+      <br></br>
+      &lt;/Directory&gt;
+      <br></br>
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      <br></br>
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      <br></br>
+      &lt;IfModule mod_dir.c&gt;
+      <br></br>
+      DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm
+      <br></br>
+      &lt;/IfModule&gt;
+      <br></br>
+      &lt;/VirtualHost&gt;</code>
 
       <p>Next, copy the configuration file for your first site in preparation for your second.</p>
 

@@ -1,0 +1,241 @@
+html, body, h1, h2, h3, h4, h5, ul, li, p {
+  line-height: 1.334em;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.code, code {
+  color: #cd6e89;
+  font-size: 19px;
+}
+
+.quote, blockquote {
+  background-color: #f1f1f1;
+  border-left: 7px solid #cccccc;
+  padding: 10px;
+  font-size: 20px;
+  color: #50485d
+}
+
+.page-box img {
+  width: 100%;
+}
+
+.break-line, hr {
+  border-top: 3px solid #ccc;
+}
+
+.page-box li {
+  font-size: 20px;
+}
+
+.page-box p, .page-box li {
+  color: #50485d;
+}
+
+.blog-name {
+  color: #ffffff;
+  font-size: 60px;
+  text-align: center;
+}
+
+.blog-description {
+  font-size: 25px;
+  font-family: "Cardo", serif;
+  color: #ffffff;
+  text-align: center;
+}
+
+.blog-body {
+  text-align: left;
+}
+
+.page-box {
+  width: 45em;
+  margin: 10px auto;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  border-bottom: 1px solid #e5e4e1;
+  padding: 10px;
+}
+
+.page-box a {
+  border-bottom: 2px solid #0b5394;
+  color: #000000;
+  text-decoration: none;
+}
+
+.page-box a:hover {
+  border-bottom: 2px solid #073763;;
+}
+
+.page-box h1 {
+  font-size: 35px;
+}
+
+.page-box p {
+  font-size: 20px;
+}
+
+.post-box h2 {
+  font-size: 2em;
+  line-height: 30px;
+}
+
+.post-box a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.preview {
+  font-size: 18px;
+}
+
+.post-box {
+  width: 45em;
+  margin: 10px auto;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  border-bottom: 1px solid #e5e4e1;
+}
+
+@media screen and (max-width: 772px) {
+  .post-box {
+    width: auto;
+    margin: 5px;
+  }
+
+  .post-box h2 {
+    font-size: 30px;
+  }
+
+  .preview {
+    font-size: 16px;
+  }
+  .tags-date {
+    font-size: 0.5em;
+  }
+  .page-box {
+    width: auto;
+  }
+}
+
+.tags-date {
+  color: rgb(138, 145, 153);
+  font-size: 0.75em;
+}
+
+.tags-date a {
+  color: rgb(138, 145, 153);
+  text-decoration: none;
+  border-bottom: 1px solid #0b5394;
+}
+
+.tags-date a:hover {
+  border-bottom: 1px solid #073763;;
+  color: #000000;
+}
+
+.footer-copyright {
+  text-align: center;
+  padding: 30px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer-copyright a {
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid #0b5394;
+}
+
+.footer-copyright a:hover {
+  border-bottom: 1px solid #073763;
+}
+
+.banner {
+  background-color: #0b5394;
+  padding: 3%;
+  text-align: center;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  line-height: 30px;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+.menu-button {
+  font-size:20px;
+  cursor:pointer;
+  float: right;
+  margin: 20px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  color: #ccc;
+  padding: 10px;
+  line-height: 20px;
+}
+
+.menu-button:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.top-logo {
+  width: 40px;
+  height: 40px;
+  margin: 20px;
+}
+
+.nav-logo {
+  background-color: #073763;
+}
