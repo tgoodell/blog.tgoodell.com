@@ -117,24 +117,7 @@
 
       <p><code>nano /var/www/tristangoodell.com/public_html/index.html</code></p>
 
-      <p>Create some basic HTML with a few indicators showing that the web page is showing up for the right domain. Something like this will do:</p>
-
-      <pre><code>&lt;HTML&gt;
-
-      &lt;head&gt;
-
-      &lt;h1&gt;Success!&lt;/h1&gt;
-
-      &lt;/head&gt;
-
-      &lt;body&gt;
-
-      &lt;p&gt;You are now viewing tristangoodell.com!&lt;/p&gt;
-
-      &lt;/body&gt;
-
-      &lt;/html&gt;
-      </code></pre>
+      <p>Create some basic HTML with a few indicators showing that the web page is showing up for the right domain.</p>
 
       <p>Next, copy the <code>index.html</code> file that was just created and move it to the correct directory.</p>
 
@@ -154,37 +137,37 @@
 
       <p>The end result should look similar to this:</p>
 
-      <pre><code>&lt;VirtualHost *:80&gt;
+      <p><code>&lt;VirtualHost *:80&gt;</p></code>
 
-      ServerAdmin contact@tristangoodell.com
+      <p><code>ServerAdmin contact@tristangoodell.com</p></code>
 
-      DocumentRoot /var/www/tristangoodell.com/public_html
+      <p><code>DocumentRoot /var/www/tristangoodell.com/public_html</p></code>
 
-      ServerName tristangoodell.com
+      <p><code>ServerName tristangoodell.com</p></code>
 
-      ServerAlias tristangoodell.com
+      <p><code>ServerAlias tristangoodell.com</p></code>
 
-      &lt;Directory /var/www/tristangoodell.com/public_html&gt;
+      <p><code>&lt;Directory /var/www/tristangoodell.com/public_html&gt;</p></code>
 
-      Options Indexes FollowSymLinks
+      <p><code>Options Indexes FollowSymLinks</p></code>
 
-      AllowOverride All
+      <p><code>AllowOverride All</p></code>
 
-      Require all granted
+      <p><code>Require all granted</p></code>
 
-      &lt;/Directory&gt;
+      <p><code>&lt;/Directory&gt;</p></code>
 
-      ErrorLog ${APACHE_LOG_DIR}/error.log
+      <p><code>ErrorLog ${APACHE_LOG_DIR}/error.log</p></code>
 
-      CustomLog ${APACHE_LOG_DIR}/access.log combined
+      <p><code>CustomLog ${APACHE_LOG_DIR}/access.log combined</p></code>
 
-      &lt;IfModule mod_dir.c&gt;
+      <p><code>&lt;IfModule mod_dir.c&gt;</p></code>
 
-      DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm
+      <p><code>DirectoryIndex index.php index.pl index.cgi index.html index.xhtml index.htm</p></code>
 
-      &lt;/IfModule&gt;
+      <p><code>&lt;/IfModule&gt;</p></code>
 
-      &lt;/VirtualHost&gt;</code></pre>
+      <p><code>&lt;/VirtualHost&gt;</code></p>
 
       <p>Next, copy the configuration file for your first site in preparation for your second.</p>
 
