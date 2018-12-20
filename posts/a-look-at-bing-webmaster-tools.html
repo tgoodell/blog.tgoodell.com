@@ -1,0 +1,171 @@
+<html lang="en">
+  <head>
+    <title>A Look at Bing Webmaster Tools</title>
+    <link rel="stylesheet" href="../assets/css/master.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <script src="../assets/js/script.js"></script>
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" sizes="16x16 32x32 64x64" href="../assets/favicons/favicon.ico">
+    	<link rel="icon" type="image/png" sizes="196x196" href="../assets/favicons/favicon-192.png">
+    	<link rel="icon" type="image/png" sizes="160x160" href="../assets/favicons/favicon-160.png">
+    	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicons/favicon-96.png">
+    	<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicons/favicon-64.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16.png">
+    	<link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png">
+    	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicons/favicon-114.png">
+    	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicons/favicon-72.png">
+    	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicons/favicon-144.png">
+    	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicons/favicon-60.png">
+    	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicons/favicon-120.png">
+    	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicons/favicon-76.png">
+    	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicons/favicon-152.png">
+    	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/favicon-180.png">
+    	<meta name="msapplication-TileColor" content="#FFFFFF">
+    	<meta name="msapplication-TileImage" content="../assets/favicons/favicon-144.png">
+    	<meta name="msapplication-config" content="../assets/favicons/browserconfig.xml">
+      <!-- Matomo -->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//analytics.sugaryweb.com/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', '1']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <!-- End Matomo Code -->
+  </head>
+  <nav>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content">
+        <a href="https://tristangoodell.com">Home</a>
+        <a href="https://blog.tgoodell.com">Blog</a>
+        <a href="../tags.html">Tags</a>
+        <a href="https://tristangoodell.com/work.html">My Work</a>
+        <a href="../contact.html">Get In Touch</a>
+        <a href="https://github.com/tgoodell">Github</a>
+      </div>
+    </div>
+    <div class="nav-logo">
+      <span class="menu-button" onclick="openNav()">&#9776; Menu</span>
+      <span>
+        <a href="https://blog.tgoodell.com">
+          <img src="../assets/images/logo.png" alt="blog-logo" class="top-logo"></img>
+        </a>
+      </span>
+    </div>
+  </nav>
+  <body>
+    <div class="page-box">
+      <h1 id="a-look-at-bing-webmaster-tools">A Look at Bing Webmaster Tools</h1>
+      <p><em>Tristan Goodell on <a href="../tags/tutorial.html">Tutorial</a>, <a href="../tags/website.html">Website</a> | 19 Dec 2018</em></p>
+      <h2 id="why-">Why?</h2>
+      <p>Simply put, not everyone uses Google as their primary search engine. Although there are contradicting statistics out there about search engine market share, a strong minority still use Bing as their primary search engine. Furthermore, <a href="https://arstechnica.com/information-technology/2010/08/yahoo-transition-to-bing-finalized-in-us-canada/">Yahoo search is powered by Bing</a>. </p>
+      <p>According to <a href="https://www.netmarketshare.com/search-engine-market-share.aspx?options=%7B%22filter%22%3A%7B%7D%2C%22dateLabel%22%3A%22Trend%22%2C%22attributes%22%3A%22share%22%2C%22group%22%3A%22searchEngine%22%2C%22sort%22%3A%7B%22share%22%3A-1%7D%2C%22id%22%3A%22searchEnginesDesktop%22%2C%22dateInterval%22%3A%22Monthly%22%2C%22dateStart%22%3A%222017-12%22%2C%22dateEnd%22%3A%222018-11%22%2C%22segments%22%3A%22-1000%22%7D">netmarketshare.com</a>, Bing has a market share of 4.52%. Yahoo has a market share of 2.39%. While that may not seem like a lot, it is. When <a href="https://internetworldstats.com/stats.htm">4,208,571,287</a> people use the internet worldwide, a combined 6.91% is massive! That is an astounding 290,812,275 people! </p>
+      <p><img src="../assets/images/world-internet-usage.png" alt="World Internet Usage"></p>
+      <p>Besides the obvious reason for reaching more people just through Yahoo and Bing, I also wanted to target more people that use meta search engines like <a href="https://duckduckgo.com">DuckDuckGo</a> and <a href="https://startpage.com">Startpage</a>.</p>
+      <hr>
+      <h2 id="step-1-signing-up">Step 1 - Signing Up</h2>
+      <p>Head over to <a href="https://www.bing.com/toolbox/webmaster/">Bing Webmaster Tools</a>. You will need to sign in/up with a Google, Facebook, or Microsoft account. Annoyingly, you cannot create an account <em>just</em> for the Bing Webmaster Tools. If you click &quot;Sign Up&quot;, you are prompted with the same message as if you clicked &quot;Sign In&quot;. </p>
+      <p>Once you complete the Sign In/Up process, you will be greeted with a screen like this:</p>
+      <p><img src="../assets/images/bing-webmaster-tools-launch.png" alt="Bing Webmaster Tools Launch"></p>
+      <h2 id="step-2-adding-a-site">Step 2 - Adding a Site</h2>
+      <p>Simply add a site in the box as shown below and click &quot;Add&quot;.</p>
+      <p><img src="../assets/images/bing-add-site.png" alt="Bing Add Site"></p>
+      <p>You will then be greeted with a page asking for information ranging from a sitemap to your industry type.</p>
+      <p>Next, you will have to verify that you actually own the site. You will be greeted by three options for verification: </p>
+      <ul>
+      <li><p>Placing an XML file on your web server.</p>
+      </li>
+      <li><p>Add a <meta> tag to your default webpage (i.e <a href="https://tristangoodell.com">https://tristangoodell.com</a>)</p>
+      </li>
+      <li><p>Add a CNAME record to your DNS. </p>
+      </li>
+      </ul>
+      <p>All three are fairly self-explanatory. Choose whichever one you prefer. </p>
+      <h2 id="step-3-tweaking-">Step 3 - Tweaking!</h2>
+      <p>There is a massive list of customizability options here. These include:</p>
+      <h3 id="configure-my-sites">Configure My Sites</h3>
+      <ul>
+      <li><p>Sitemaps: list a sitemap to be crawled.</p>
+      </li>
+      <li><p>Ignore these URL Parameters: to remove duplicate page queries</p>
+      </li>
+      <li><p>Crawl Control: the time of day Bing should crawl your site.</p>
+      </li>
+      <li><p>Deep Links: prevent URLs from appearing as deep links in Bing search results.</p>
+      </li>
+      <li><p>Block URLs: prevent certain URLs from being indexed. </p>
+      </li>
+      <li><p>Disavow Links: tell Bing about links that point to your site that you do not trust. </p>
+      </li>
+      <li><p>Geo-Targeting: Target a specific country with pages or the entire site.</p>
+      </li>
+      <li><p>Verify Ownership: verify that you actually own the property (this was already done).</p>
+      </li>
+      <li><p>Connected Page: connect related web presences such as social media to your site and search results. </p>
+      </li>
+      <li><p>Users: grant new users permissions to view and edit Bing Webmaster Tools for your website.</p>
+      </li>
+      </ul>
+      <h3 id="reports-data">Reports &amp; Data</h3>
+      <ul>
+      <li><p>Page Traffic: view the top pages from organic search results.</p>
+      </li>
+      <li><p>Page Mobile Friendliness: ensure that your pages are mobile friendly. </p>
+      </li>
+      <li><p>Index Explorer: see how Bing sees your site.</p>
+      </li>
+      <li><p>Search Keywords: view the keywords associated with your site in search results.</p>
+      </li>
+      <li><p>SEO Reports: bi-monthly reports for whether or not your site is in compliance with SEO best practices. </p>
+      </li>
+      <li><p>Inbound Links: a list of external websites that have pointed to your content.</p>
+      </li>
+      <li><p>Crawl information: view crawl errors and other data from the latest crawl.</p>
+      </li>
+      </ul>
+      <h3 id="diagnostics-tools">Diagnostics &amp; Tools</h3>
+      <ul>
+      <li><p>Mobile Friendliness Test: a simple test to determine whether or not your site is mobile friendly.</p>
+      </li>
+      <li><p>Keyword Research: determine what volume of searches origenate from a certain phrase.</p>
+      </li>
+      <li><p>Fetch as Bingbot: view crawl data from Bingbot.</p>
+      </li>
+      <li><p>Markup Validator: display errors when markup code is incorrect or i the wrong place.</p>
+      </li>
+      <li><p>SEO Analyzer: crawl a page and determine if the page uses SEO best practices.</p>
+      </li>
+      <li><p>Verify Bingbot: Useful for identifying Bingbot in Analytics.</p>
+      </li>
+      <li><p>Site Move: notify Bing for URL changes.</p>
+      </li>
+      </ul>
+      <h3 id="security">Security</h3>
+      <ul>
+      <li><p>Malware: view Malware-infested URLs associated with your site.</p>
+      </li>
+      <li><p>Phishing: view Phishing URLs associated with your site.</p>
+      </li>
+      <li><p>Track Certificates: view certificates requested by visitors.</p>
+      </li>
+      </ul>
+      <p>I would not bother with the group <em>Widgets</em>. Likewise, <em>Messages</em> is fairy self-explanatory.</p>
+      <hr>
+      <p>Hope this helped! </p>
+      <p>Email: <a href="mailto:contact@tgoodell.com">contact@tgoodell.com</a></p>
+      <p>Mastodon: <a href="https://mastodon.technology/@tgoodell">@tgoodell@mastodon.technology</a></p>
+      
+    </div>
+    <div class="footer-copyright">
+      Copyright <a href="https://tristangoodell.com/">Tristan Goodell</a> 2018
+    </div>
+  </body>
+</html>
