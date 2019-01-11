@@ -144,17 +144,17 @@ body {
   text-align: center;
   padding: 30px;
   text-decoration: none;
-  color: #000000;
+  color: #ffffff;
 }
 
 .footer-copyright a {
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
   border-bottom: 1px solid #0b5394;
 }
 
 .footer-copyright a:hover {
-  border-bottom: 1px solid #073763;
+  border-bottom: 2px solid #0b5394;
 }
 
 .banner {
@@ -239,4 +239,96 @@ body {
 
 .nav-logo {
   background-color: #073763;
+}
+
+.signup input {
+  border-radius: 0;
+  border: 0px;
+  margin: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.form {
+  text-align: center;
+  background-color: #0b5394;
+  padding: 10px;
+}
+
+.form-box {
+  width: 25%;
+  margin: auto;
+}
+
+@media screen and (max-width: 1655px) {
+  .form-box {
+    width: auto;
+  }
+}
+
+.button {
+  background-color: #ffffff;
+  padding: 5px 10px;
+}
+
+.button:hover {
+  background-color:#eeeded;
+}
+
+.footer-box {
+  background-color: #073763;
+  padding: 10px;
+}
+
+.signup h3 {
+  color: #ffffff;
+}
+
+.footer-nav {
+  color: #ffffff;
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+.footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid #0b5394;
+}
+
+.footer-nav a:hover {
+  border-bottom: 2px solid #0b5394;
+}
+
+.about-author {
+  width: 46em;
+  background-color: #f3f3f3;
+  padding: 5px;
+  box-shadow: 5px 10px #888888;
+  margin:auto;
+}
+
+.author-text {
+  padding: 1%;
+}
+
+.about-author p {
+  font-size: 20px;
+}
+
+.about-author a {
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid #0b5394;
+}
+
+.about-author a:hover {
+  border-bottom: 1px solid #073763;
+}
+
+footer {
+  margin-top: 10px;
 }
