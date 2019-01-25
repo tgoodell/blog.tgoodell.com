@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://blog.tgoodell.com"> 
   <url>
+    <loc>https://blog.tgoodell.com/posts/joining-tsa.html</loc>
+    <lastmod>2019-1-24</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.tgoodell.com/posts/a-look-at-bing-webmaster-tools.html</loc>
+    <lastmod>2018-12-20</lastmod>
+  </url>
+  <url>
     <loc>https://blog.tgoodell.com</loc>
     <lastmod>2018-12-18</lastmod>
   </url>
